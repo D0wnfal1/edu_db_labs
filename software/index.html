@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | Система управління проектами</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/edu_db_labs/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/edu_db_labs/assets/css/0.styles.1e5a53e3.css" as="style"><link rel="preload" href="/edu_db_labs/assets/js/app.1b2e2aef.js" as="script"><link rel="preload" href="/edu_db_labs/assets/js/2.4936aa70.js" as="script"><link rel="preload" href="/edu_db_labs/assets/js/1.94825421.js" as="script"><link rel="preload" href="/edu_db_labs/assets/js/30.e2eb125b.js" as="script"><link rel="prefetch" href="/edu_db_labs/assets/js/10.300a4899.js"><link rel="prefetch" href="/edu_db_labs/assets/js/13.0cb61c15.js"><link rel="prefetch" href="/edu_db_labs/assets/js/14.88313f98.js"><link rel="prefetch" href="/edu_db_labs/assets/js/15.99633a4f.js"><link rel="prefetch" href="/edu_db_labs/assets/js/16.2bc577d7.js"><link rel="prefetch" href="/edu_db_labs/assets/js/17.73179dfb.js"><link rel="prefetch" href="/edu_db_labs/assets/js/18.bbb3bd3c.js"><link rel="prefetch" href="/edu_db_labs/assets/js/19.9b8f087f.js"><link rel="prefetch" href="/edu_db_labs/assets/js/20.0881a58f.js"><link rel="prefetch" href="/edu_db_labs/assets/js/21.39425e04.js"><link rel="prefetch" href="/edu_db_labs/assets/js/22.d2077878.js"><link rel="prefetch" href="/edu_db_labs/assets/js/23.3ec6ef11.js"><link rel="prefetch" href="/edu_db_labs/assets/js/24.30ee8832.js"><link rel="prefetch" href="/edu_db_labs/assets/js/25.9b82b3b9.js"><link rel="prefetch" href="/edu_db_labs/assets/js/26.590bbba7.js"><link rel="prefetch" href="/edu_db_labs/assets/js/27.82273840.js"><link rel="prefetch" href="/edu_db_labs/assets/js/28.37c300d2.js"><link rel="prefetch" href="/edu_db_labs/assets/js/29.0f027b3a.js"><link rel="prefetch" href="/edu_db_labs/assets/js/3.3a389e6a.js"><link rel="prefetch" href="/edu_db_labs/assets/js/31.3a82a6a6.js"><link rel="prefetch" href="/edu_db_labs/assets/js/32.a1920feb.js"><link rel="prefetch" href="/edu_db_labs/assets/js/33.96dbef15.js"><link rel="prefetch" href="/edu_db_labs/assets/js/34.12d2583d.js"><link rel="prefetch" href="/edu_db_labs/assets/js/35.707b89a6.js"><link rel="prefetch" href="/edu_db_labs/assets/js/36.e9a95e6d.js"><link rel="prefetch" href="/edu_db_labs/assets/js/37.e61c002f.js"><link rel="prefetch" href="/edu_db_labs/assets/js/38.95d35231.js"><link rel="prefetch" href="/edu_db_labs/assets/js/39.10ea4be4.js"><link rel="prefetch" href="/edu_db_labs/assets/js/4.6f9e5ef2.js"><link rel="prefetch" href="/edu_db_labs/assets/js/40.64c3b59b.js"><link rel="prefetch" href="/edu_db_labs/assets/js/41.e16fbfde.js"><link rel="prefetch" href="/edu_db_labs/assets/js/5.271a1bcd.js"><link rel="prefetch" href="/edu_db_labs/assets/js/6.a49fc274.js"><link rel="prefetch" href="/edu_db_labs/assets/js/7.221b49a3.js"><link rel="prefetch" href="/edu_db_labs/assets/js/8.d86237d5.js"><link rel="prefetch" href="/edu_db_labs/assets/js/9.a032969c.js"><link rel="prefetch" href="/edu_db_labs/assets/js/vendors~docsearch.8644e795.js">
+    <link rel="stylesheet" href="/edu_db_labs/assets/css/0.styles.1e5a53e3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/edu_db_labs/" class="home-link router-link-active"><!----> <span class="site-name">Система управління проектами</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/edu_db_labs/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/Tomas997/edu_db_labs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/edu_db_labs/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/Tomas997/edu_db_labs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/edu_db_labs/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/edu_db_labs/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/edu_db_labs/use%20cases/" class="sidebar-link">Розроблення вимог до функціональности системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/use%20cases/#загальна-схема" class="sidebar-link">Загальна схема</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/use%20cases/#тімлід" class="sidebar-link">Тімлід</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/use%20cases/#робітник" class="sidebar-link">Робітник</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/use%20cases/#адміністратор" class="sidebar-link">Адміністратор</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/use%20cases/#сценаріі-використання" class="sidebar-link">Сценарії використання</a></li></ul></li><li><a href="/edu_db_labs/design/" class="sidebar-link">Проектування інформаційного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/design/#модель-бізнес-об-єктів" class="sidebar-link">Модель бізнес-об'єктів</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/design/#er-модель" class="sidebar-link">ER-модель</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/design/#реляціина-схема" class="sidebar-link">Реляційна схема</a></li></ul></li><li><a href="/edu_db_labs/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#sql-скрипт-для-створення-та-початкового-наповнення-бази-даних" class="sidebar-link">SQL-скрипт для створення та початкового наповнення бази даних</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#restful-сервіс-для-керування-даними-framework-asp-net-webapi" class="sidebar-link">RESTful сервіс для керування даними (Framework: ASP.NET WebAPI)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#діаграма-класів" class="sidebar-link">Діаграма класів</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#моделі" class="sidebar-link">Моделі</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#project" class="sidebar-link">Project</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#projectteam" class="sidebar-link">ProjectTeam</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#task" class="sidebar-link">Task</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#team" class="sidebar-link">Team</a></li></ul></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#dbcontext" class="sidebar-link">DbContext</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#applicationdbcontext" class="sidebar-link">ApplicationDbContext</a></li></ul></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#контролери" class="sidebar-link">Контролери</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#projectcontroller" class="sidebar-link">ProjectController</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#taskcontroller" class="sidebar-link">TaskController</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#teamcontroller" class="sidebar-link">TeamController</a></li></ul></li><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#фаил-запуску" class="sidebar-link">Файл запуску</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/software/#program" class="sidebar-link">Program</a></li></ul></li></ul></li><li><a href="/edu_db_labs/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#restfulapi" class="sidebar-link">RESTfulAPI</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#project" class="sidebar-link">Project</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#get-all" class="sidebar-link">Get (All)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#post" class="sidebar-link">Post</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#task" class="sidebar-link">Task</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#get-id" class="sidebar-link">Get (id)</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#team" class="sidebar-link">Team</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#put" class="sidebar-link">Put</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#delete" class="sidebar-link">Delete</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#projectschema" class="sidebar-link">ProjectSchema</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#projectteamschema" class="sidebar-link">ProjectTeamSchema</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#taskschema" class="sidebar-link">TaskSchema</a></li><li class="sidebar-sub-header"><a href="/edu_db_labs/test/#teamschema" class="sidebar-link">TeamSchema</a></li></ul></li></ul></li><li><a href="/edu_db_labs/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <h2 id="sql-скрипт-для-створення-та-початкового-наповнення-бази-даних"><a href="#sql-скрипт-для-створення-та-початкового-наповнення-бази-даних" class="header-anchor">#</a> SQL-скрипт для створення та початкового наповнення бази даних</h2> <div class="language- extra-class"><pre class="language-text"><code>
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema schema
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `schema` ;
+
+-- -----------------------------------------------------
+-- Schema schema
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `schema` DEFAULT CHARACTER SET utf8 ;
+USE `schema` ;
+
+-- -----------------------------------------------------
+-- Table `schema`.`Project`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Project` (
+  `idProject` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(256) NOT NULL,
+  PRIMARY KEY (`idProject`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Team`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Team` (
+  `idTeam` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `description` VARCHAR(256) NULL,
+  `Project_id` INT NOT NULL,
+  PRIMARY KEY (`idTeam`),
+  INDEX `Project_id_idx` (`Project_id` ASC) VISIBLE,
+  CONSTRAINT `Project_id`
+    FOREIGN KEY (`Project_id`)
+    REFERENCES `schema`.`Project` (`idProject`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Role` (
+  `idRole` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(256) NOT NULL,
+  PRIMARY KEY (`idRole`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`User`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`User` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `photo` VARCHAR(256) NULL,
+  `is_banned` TINYINT NOT NULL,
+  PRIMARY KEY (`idUser`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Collaborators`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Collaborators` (
+  `idCollaborators` INT NOT NULL AUTO_INCREMENT,
+  `Role_id` INT NOT NULL,
+  `User_id` INT NOT NULL,
+  `Team_id` INT NOT NULL,
+  PRIMARY KEY (`idCollaborators`),
+  INDEX `Team_id_idx` (`Team_id` ASC) VISIBLE,
+  INDEX `Role_id_idx` (`Role_id` ASC) VISIBLE,
+  INDEX `User_id_idx` (`User_id` ASC) VISIBLE,
+  CONSTRAINT `Team_id`
+    FOREIGN KEY (`Team_id`)
+    REFERENCES `schema`.`Team` (`idTeam`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Role_id`
+    FOREIGN KEY (`Role_id`)
+    REFERENCES `schema`.`Role` (`idRole`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `User_id`
+    FOREIGN KEY (`User_id`)
+    REFERENCES `schema`.`User` (`idUser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Permission`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Permission` (
+  `idPermission` INT NOT NULL AUTO_INCREMENT,
+  `action` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idPermission`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Grant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Grant` (
+  `Role_id` INT NOT NULL,
+  `Permission_id` INT NOT NULL,
+  PRIMARY KEY (`Role_id`, `Permission_id`),
+  INDEX `Permission_id_idx` (`Permission_id` ASC) VISIBLE,
+  CONSTRAINT `Grant_Role_id`
+    FOREIGN KEY (`Role_id`)
+    REFERENCES `schema`.`Role` (`idRole`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Permission_id`
+    FOREIGN KEY (`Permission_id`)
+    REFERENCES `schema`.`Permission` (`idPermission`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Task`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Task` (
+  `idTask` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(256) NULL,
+  `deadline` DATETIME NULL,
+  `creation_date` DATETIME NOT NULL,
+  PRIMARY KEY (`idTask`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Assignment`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Assignment` (
+  `idAssignment` INT NOT NULL AUTO_INCREMENT,
+  `date_time` DATETIME NULL,
+  `Collaborator_id` INT NOT NULL,
+  `Task_id` INT NOT NULL,
+  PRIMARY KEY (`idAssignment`),
+  INDEX `Collaborator_id_idx` (`Collaborator_id` ASC) VISIBLE,
+  INDEX `Task_id_idx` (`Task_id` ASC) VISIBLE,
+  CONSTRAINT `Collaborator_id`
+    FOREIGN KEY (`Collaborator_id`)
+    REFERENCES `schema`.`Collaborators` (`idCollaborators`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Task_id`
+    FOREIGN KEY (`Task_id`)
+    REFERENCES `schema`.`Task` (`idTask`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Action`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Action` (
+  `Task_id` INT NOT NULL,
+  `Assignment_id` INT NOT NULL,
+  `Collaborator_id` INT NOT NULL,
+  `date_time` DATETIME NULL,
+  PRIMARY KEY (`Collaborator_id`, `Assignment_id`, `Task_id`),
+  INDEX `Assignment_id_idx` (`Assignment_id` ASC) VISIBLE,
+  INDEX `Collaborator_id_idx` (`Collaborator_id` ASC) VISIBLE,
+  INDEX `Task_id_idx` (`Task_id` ASC) VISIBLE,
+  CONSTRAINT `Action_Task_id`
+    FOREIGN KEY (`Task_id`)
+    REFERENCES `schema`.`Task` (`idTask`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Assignment_id`
+    FOREIGN KEY (`Assignment_id`)
+    REFERENCES `schema`.`Assignment` (`idAssignment`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Action_Collaborator_id`
+    FOREIGN KEY (`Collaborator_id`)
+    REFERENCES `schema`.`Collaborators` (`idCollaborators`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Tag`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Tag` (
+  `idTag` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(256) NULL,
+  PRIMARY KEY (`idTag`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `schema`.`Label`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `schema`.`Label` (
+  `Task_id` INT NOT NULL,
+  `Tag_id` INT NOT NULL,
+  PRIMARY KEY (`Task_id`, `Tag_id`),
+  INDEX `Tag_id_idx` (`Tag_id` ASC) VISIBLE,
+  CONSTRAINT `Label_Task_id`
+    FOREIGN KEY (`Task_id`)
+    REFERENCES `schema`.`Task` (`idTask`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Tag_id`
+    FOREIGN KEY (`Tag_id`)
+    REFERENCES `schema`.`Tag` (`idTag`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+
+
+
+-- Початок транзакції
+START TRANSACTION;
+
+-- Додавання даних в таблицю `schema`.`Permission`
+INSERT INTO `schema`.`Permission` (`action`)
+VALUES
+    -- collaborator
+    ('EditUser'),
+    ('CreateTask'),
+    ('EditTask'),
+    ('DeleteTask'),
+    ('FilterTask'),
+    ('CommentTask'),
+    -- teamlead
+    ('CreateProject'),
+    ('DeleteProject'),
+    ('CreateSprint'),
+    ('FinishSprint'),
+    ('AddMember'),
+    ('DeleteMember'),
+    -- admin
+    ('UserSupport'),
+    ('BanUser'),
+    ('UnBanUser');
+
+
+-- Додавання даних в таблицю `schema`.`Role`
+INSERT INTO `schema`.`Role` (`name`, `description`)
+VALUES
+    ('Administrator', 'Administrator role'),
+    ('Team-lead', 'Team-lead role'),
+    ('Collaborator', 'Developer role');
+
+-- Додавання даних в таблицю `schema`.`Grant`
+INSERT INTO `schema`.`Grant` (`Role_id`, `Permission_id`)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8),
+    (1, 9),
+    (1, 10),
+    (1, 11),
+    (1, 12),
+    (1, 13),
+    (1, 14),
+    (1, 15),
+
+    (2, 1),
+    (2, 2),
+    (2, 3),
+    (2, 4),
+    (2, 5),
+    (2, 6),
+    (2, 7),
+    (2, 8),
+    (2, 9),
+    (2, 10),
+    (2, 11),
+    (2, 12),
+
+    (3, 1),
+    (3, 2),
+    (3, 3),
+    (3, 4),
+    (3, 5),
+    (3, 6);
+
+
+-- Додавання даних в таблицю `schema`.`Project`
+INSERT INTO `schema`.`Project` (`name`, `description`)
+VALUES
+    ('Project 1', 'Description for Project 1'),
+    ('Project 2', 'Description for Project 2');
+
+-- Додавання даних в таблицю `schema`.`Team`
+INSERT INTO `schema`.`Team` (`idTeam`, `name`, `description`, `Project_id`)
+VALUES
+    (1, 'Team 1', 'description1', 1),
+    (2, 'Team 2', 'description2', 2);
+
+-- Додавання даних в таблицю `schema`.`User`
+INSERT INTO `schema`.`User` (`name`, `email`, `password`, `photo`, `is_banned`)
+VALUES
+    ('User1', 'user1@example.com', 'password1', 'link.com/photo', 0),
+    ('User2', 'user2@example.com', 'password2', 'link.com/photo', 0);
+
+-- Додавання даних в таблицю `schema`.`Collaborators`
+INSERT INTO `schema`.`Collaborators` (`Role_id`, `User_id`, `Team_id`)
+VALUES
+    (1, 1, 1),  -- Admin User 1 in Team 1
+    (2, 2, 2);  -- Manager User 2 in Team 2
+
+
+
+-- Додавання даних в таблицю `schema`.`Task`
+INSERT INTO `schema`.`Task` (`name`, `description`, `deadline`, `creation_date`)
+VALUES
+    ('Task 1', 'Description for Task 1', '2023-10-31 12:00:00', NOW()),
+    ('Task 2', 'Description for Task 2', '2023-11-15 14:30:00', NOW()),
+    ('Task 3', 'Description for Task 3', '2023-11-20 10:00:00', NOW());
+
+-- Додавання тестових даних в таблицю `schema.Assignment`
+INSERT INTO `schema`.`Assignment` (`date_time`, `Collaborator_id`, `Task_id`)
+VALUES
+    ('2023-10-18 11:30:00', 1, 1),
+    ('2023-10-19 14:15:00', 2, 2),
+    ('2023-10-20 09:45:00', 1, 3);
+
+
+COMMIT;
+
+
+</code></pre></div><h2 id="restful-сервіс-для-керування-даними-framework-asp-net-webapi"><a href="#restful-сервіс-для-керування-даними-framework-asp-net-webapi" class="header-anchor">#</a> RESTful сервіс для керування даними (Framework: ASP.NET WebAPI)</h2> <p>Цей сервіс розроблено з використанням Web API, що реалізований на платформі .NET - ASP.net WEB API.
+Він базується на базовій архітектурі MVC (Model-View-Controller), де:</p> <ul><li>Model (Модель) - забезпечує дані та реагує на команди контролера, змінюючи свій стан.</li> <li>View (Вигляд) - відповідає за виведення даних для клієнта (в даному випадку - умовно, оскільки це лише Web API).</li> <li>Controller (Контролер) - інтерпретує дії користувача та повідомляє Моделі про необхідність змін стану.</li></ul> <p>ASP.NET надає програмісту дуже зручний функціонал для створення веб-додатків і, у поєднанні з фреймворком Entity Framework та бібліотекою LINQ (Language Integrated Query), розробник може легко взаємодіяти з базами даних без написання SQL-скриптів напряму.</p> <h2 id="діаграма-класів"><a href="#діаграма-класів" class="header-anchor">#</a> Діаграма класів</h2> <p><img src="/edu_db_labs/assets/img/diagram.a67680ce.png"></p> <h2 id="моделі"><a href="#моделі" class="header-anchor">#</a> Моделі</h2> <h3 id="project"><a href="#project" class="header-anchor">#</a> Project</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">.</span>DataAnnotations</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Project</span>
+    <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Key</span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Details <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name">ICollection<span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span></span> Tasks <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name">ICollection<span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span> ProjectTeams <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="projectteam"><a href="#projectteam" class="header-anchor">#</a> ProjectTeam</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">.</span>DataAnnotations<span class="token punctuation">.</span>Schema</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProjectTeam</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> ProjectId <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ForeignKey</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;ProjectId&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">Project</span> Project <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> TeamId <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ForeignKey</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;TeamId&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">Team</span> Team <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="task"><a href="#task" class="header-anchor">#</a> Task</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">.</span>DataAnnotations</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">.</span>DataAnnotations<span class="token punctuation">.</span>Schema</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Task</span>
+    <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Key</span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Required</span></span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Title <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Details <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Required</span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">DateTime</span> Deadline <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Required</span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> ProjectId <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ForeignKey</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;ProjectId&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">Project</span> Project <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="team"><a href="#team" class="header-anchor">#</a> Team</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>ComponentModel<span class="token punctuation">.</span>DataAnnotations</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Team</span>
+    <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Key</span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Id <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Required</span></span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">MaxLength</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Description <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name">ICollection<span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span> ProjectTeams <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="dbcontext"><a href="#dbcontext" class="header-anchor">#</a> DbContext</h2> <h3 id="applicationdbcontext"><a href="#applicationdbcontext" class="header-anchor">#</a> ApplicationDbContext</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>EntityFrameworkCore</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Linq</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token class-name">Task</span> <span class="token operator">=</span> <span class="token class-name">RESTfulAPI<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>Task</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Data</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ApplicationDbContext</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">DbContext</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token function">ApplicationDbContext</span><span class="token punctuation">(</span><span class="token class-name">DbContextOptions<span class="token punctuation">&lt;</span>ApplicationDbContext<span class="token punctuation">&gt;</span></span> options<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">base</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name">DbSet<span class="token punctuation">&lt;</span>Project<span class="token punctuation">&gt;</span></span> Projects <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">DbSet<span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span></span> Tasks <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">DbSet<span class="token punctuation">&lt;</span>Team<span class="token punctuation">&gt;</span></span> Teams <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name">DbSet<span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span> ProjectTeams <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+        <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnModelCreating</span><span class="token punctuation">(</span><span class="token class-name">ModelBuilder</span> modelBuilder<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">HasKey</span><span class="token punctuation">(</span>pt <span class="token operator">=&gt;</span> <span class="token keyword">new</span> <span class="token punctuation">{</span> pt<span class="token punctuation">.</span>ProjectId<span class="token punctuation">,</span> pt<span class="token punctuation">.</span>TeamId <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">HasOne</span><span class="token punctuation">(</span>pt <span class="token operator">=&gt;</span> pt<span class="token punctuation">.</span>Project<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">WithMany</span><span class="token punctuation">(</span>p <span class="token operator">=&gt;</span> p<span class="token punctuation">.</span>ProjectTeams<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">HasForeignKey</span><span class="token punctuation">(</span>pt <span class="token operator">=&gt;</span> pt<span class="token punctuation">.</span>ProjectId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">HasOne</span><span class="token punctuation">(</span>pt <span class="token operator">=&gt;</span> pt<span class="token punctuation">.</span>Team<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">WithMany</span><span class="token punctuation">(</span>t <span class="token operator">=&gt;</span> t<span class="token punctuation">.</span>ProjectTeams<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">HasForeignKey</span><span class="token punctuation">(</span>pt <span class="token operator">=&gt;</span> pt<span class="token punctuation">.</span>TeamId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token function">Seed</span><span class="token punctuation">(</span>modelBuilder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Seed</span><span class="token punctuation">(</span><span class="token class-name">ModelBuilder</span> modelBuilder<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>Project<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">HasData</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Project</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">&quot;Project 1&quot;</span><span class="token punctuation">,</span> Details <span class="token operator">=</span> <span class="token string">&quot;Details of Project 1&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Project</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">&quot;Project 2&quot;</span><span class="token punctuation">,</span> Details <span class="token operator">=</span> <span class="token string">&quot;Details of Project 2&quot;</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>Team<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">HasData</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Team</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">&quot;Team 1&quot;</span><span class="token punctuation">,</span> Description <span class="token operator">=</span> <span class="token string">&quot;Description of Team 1&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Team</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> Name <span class="token operator">=</span> <span class="token string">&quot;Team 2&quot;</span><span class="token punctuation">,</span> Description <span class="token operator">=</span> <span class="token string">&quot;Description of Team 2&quot;</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ProjectTeam<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">HasData</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProjectTeam</span> <span class="token punctuation">{</span> ProjectId <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> TeamId <span class="token operator">=</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProjectTeam</span> <span class="token punctuation">{</span> ProjectId <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> TeamId <span class="token operator">=</span> <span class="token number">2</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            modelBuilder<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Entity</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">HasData</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Task</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> Title <span class="token operator">=</span> <span class="token string">&quot;Task 1&quot;</span><span class="token punctuation">,</span> Details <span class="token operator">=</span> <span class="token string">&quot;Details of Task 1&quot;</span><span class="token punctuation">,</span> Deadline <span class="token operator">=</span> DateTime<span class="token punctuation">.</span>Now<span class="token punctuation">.</span><span class="token function">AddDays</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ProjectId <span class="token operator">=</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Task</span> <span class="token punctuation">{</span> Id <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> Title <span class="token operator">=</span> <span class="token string">&quot;Task 2&quot;</span><span class="token punctuation">,</span> Details <span class="token operator">=</span> <span class="token string">&quot;Details of Task 2&quot;</span><span class="token punctuation">,</span> Deadline <span class="token operator">=</span> DateTime<span class="token punctuation">.</span>Now<span class="token punctuation">.</span><span class="token function">AddDays</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ProjectId <span class="token operator">=</span> <span class="token number">2</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="контролери"><a href="#контролери" class="header-anchor">#</a> Контролери</h2> <h3 id="projectcontroller"><a href="#projectcontroller" class="header-anchor">#</a> ProjectController</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>AspNetCore<span class="token punctuation">.</span>Mvc</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>EntityFrameworkCore</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Data</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Linq</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Threading<span class="token punctuation">.</span>Tasks</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Controllers</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Route</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;api/[controller]&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ApiController</span></span><span class="token punctuation">]</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProjectController</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ControllerBase</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">ApplicationDbContext</span> _context<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">ProjectController</span><span class="token punctuation">(</span><span class="token class-name">ApplicationDbContext</span> context<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context <span class="token operator">=</span> context<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Project</span>
+        <span class="token punctuation">[</span>HttpGet<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>IEnumerable<span class="token punctuation">&lt;</span>Project<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetProjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">ToListAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Project</span>
+        <span class="token punctuation">[</span><span class="token function">HttpGet</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Project<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetProject</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> project <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>project <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> project<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// POST: api/Project</span>
+        <span class="token punctuation">[</span>HttpPost<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Project<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">PostProject</span><span class="token punctuation">(</span><span class="token class-name">Project</span> project<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>project<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">CreatedAtAction</span><span class="token punctuation">(</span><span class="token keyword">nameof</span><span class="token punctuation">(</span>GetProject<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token punctuation">{</span> id <span class="token operator">=</span> project<span class="token punctuation">.</span>Id <span class="token punctuation">}</span><span class="token punctuation">,</span> project<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// PUT: api/Project</span>
+        <span class="token punctuation">[</span><span class="token function">HttpPut</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">PutProject</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">,</span> <span class="token class-name">Project</span> project<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">!=</span> project<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">BadRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span><span class="token function">Entry</span><span class="token punctuation">(</span>project<span class="token punctuation">)</span><span class="token punctuation">.</span>State <span class="token operator">=</span> EntityState<span class="token punctuation">.</span>Modified<span class="token punctuation">;</span>
+
+            <span class="token keyword">try</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">DbUpdateConcurrencyException</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ProjectExists</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// DELETE: api/Project</span>
+        <span class="token punctuation">[</span><span class="token function">HttpDelete</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">DeleteProject</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> project <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>project <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>project<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">ProjectExists</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _context<span class="token punctuation">.</span>Projects<span class="token punctuation">.</span><span class="token function">Any</span><span class="token punctuation">(</span>e <span class="token operator">=&gt;</span> e<span class="token punctuation">.</span>Id <span class="token operator">==</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="taskcontroller"><a href="#taskcontroller" class="header-anchor">#</a> TaskController</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>AspNetCore<span class="token punctuation">.</span>Mvc</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>EntityFrameworkCore</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Data</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Linq</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Threading<span class="token punctuation">.</span>Tasks</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token class-name">Task</span> <span class="token operator">=</span> <span class="token class-name">RESTfulAPI<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>Task</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Controllers</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Route</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;api/[controller]&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ApiController</span></span><span class="token punctuation">]</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TaskController</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ControllerBase</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">ApplicationDbContext</span> _context<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">TaskController</span><span class="token punctuation">(</span><span class="token class-name">ApplicationDbContext</span> context<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context <span class="token operator">=</span> context<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Task</span>
+        <span class="token punctuation">[</span>HttpGet<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>IEnumerable<span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">ToListAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Task</span>
+        <span class="token punctuation">[</span><span class="token function">HttpGet</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetTask</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> task <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>task <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> task<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// POST: api/Task</span>
+        <span class="token punctuation">[</span>HttpPost<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Task<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">PostTask</span><span class="token punctuation">(</span><span class="token class-name">Task</span> task<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">CreatedAtAction</span><span class="token punctuation">(</span><span class="token keyword">nameof</span><span class="token punctuation">(</span>GetTask<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token punctuation">{</span> id <span class="token operator">=</span> task<span class="token punctuation">.</span>Id <span class="token punctuation">}</span><span class="token punctuation">,</span> task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// PUT: api/Task</span>
+        <span class="token punctuation">[</span><span class="token function">HttpPut</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">PutTask</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">,</span> <span class="token class-name">Task</span> task<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">!=</span> task<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">BadRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span><span class="token function">Entry</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">.</span>State <span class="token operator">=</span> EntityState<span class="token punctuation">.</span>Modified<span class="token punctuation">;</span>
+
+            <span class="token keyword">try</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">DbUpdateConcurrencyException</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">TaskExists</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// DELETE: api/Task</span>
+        <span class="token punctuation">[</span><span class="token function">HttpDelete</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">DeleteTask</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> task <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>task <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">TaskExists</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _context<span class="token punctuation">.</span>Tasks<span class="token punctuation">.</span><span class="token function">Any</span><span class="token punctuation">(</span>e <span class="token operator">=&gt;</span> e<span class="token punctuation">.</span>Id <span class="token operator">==</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="teamcontroller"><a href="#teamcontroller" class="header-anchor">#</a> TeamController</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>AspNetCore<span class="token punctuation">.</span>Mvc</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>EntityFrameworkCore</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Data</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Models</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Linq</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Threading<span class="token punctuation">.</span>Tasks</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Controllers</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Route</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">&quot;api/[controller]&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ApiController</span></span><span class="token punctuation">]</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TeamController</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">ControllerBase</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">ApplicationDbContext</span> _context<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">TeamController</span><span class="token punctuation">(</span><span class="token class-name">ApplicationDbContext</span> context<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context <span class="token operator">=</span> context<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Team</span>
+        <span class="token punctuation">[</span>HttpGet<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>IEnumerable<span class="token punctuation">&lt;</span>Team<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetTeams</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">ToListAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// GET: api/Team</span>
+        <span class="token punctuation">[</span><span class="token function">HttpGet</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Team<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">GetTeam</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> team <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>team <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> team<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// POST: api/Team</span>
+        <span class="token punctuation">[</span>HttpPost<span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>ActionResult<span class="token punctuation">&lt;</span>Team<span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token function">PostTeam</span><span class="token punctuation">(</span><span class="token class-name">Team</span> team<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>team<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">CreatedAtAction</span><span class="token punctuation">(</span><span class="token keyword">nameof</span><span class="token punctuation">(</span>GetTeam<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token punctuation">{</span> id <span class="token operator">=</span> team<span class="token punctuation">.</span>Id <span class="token punctuation">}</span><span class="token punctuation">,</span> team<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// PUT: api/Team</span>
+        <span class="token punctuation">[</span><span class="token function">HttpPut</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">PutTeam</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">,</span> <span class="token class-name">Team</span> team<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">!=</span> team<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">BadRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span><span class="token function">Entry</span><span class="token punctuation">(</span>team<span class="token punctuation">)</span><span class="token punctuation">.</span>State <span class="token operator">=</span> EntityState<span class="token punctuation">.</span>Modified<span class="token punctuation">;</span>
+
+            <span class="token keyword">try</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">DbUpdateConcurrencyException</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">TeamExists</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span>
+                <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// DELETE: api/Team</span>
+        <span class="token punctuation">[</span><span class="token function">HttpDelete</span><span class="token punctuation">(</span><span class="token string">&quot;{id}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task<span class="token punctuation">&lt;</span>IActionResult<span class="token punctuation">&gt;</span></span> <span class="token function">DeleteTeam</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> team <span class="token operator">=</span> <span class="token keyword">await</span> _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">FindAsync</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>team <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>team<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">await</span> _context<span class="token punctuation">.</span><span class="token function">SaveChangesAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> <span class="token function">NoContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">TeamExists</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> id<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> _context<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span><span class="token function">Any</span><span class="token punctuation">(</span>e <span class="token operator">=&gt;</span> e<span class="token punctuation">.</span>Id <span class="token operator">==</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="фаил-запуску"><a href="#фаил-запуску" class="header-anchor">#</a> Файл запуску</h2> <h3 id="program"><a href="#program" class="header-anchor">#</a> Program</h3> <div class="language-csharp extra-class"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>EntityFrameworkCore</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">RESTfulAPI<span class="token punctuation">.</span>Data</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> builder <span class="token operator">=</span> WebApplication<span class="token punctuation">.</span><span class="token function">CreateBuilder</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add services to the container.</span>
+builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddDbContext</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ApplicationDbContext<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span>options <span class="token operator">=&gt;</span>
+    options<span class="token punctuation">.</span><span class="token function">UseSqlServer</span><span class="token punctuation">(</span>builder<span class="token punctuation">.</span>Configuration<span class="token punctuation">.</span><span class="token function">GetConnectionString</span><span class="token punctuation">(</span><span class="token string">&quot;DefaultConnection&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token function">AddControllers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle</span>
+builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token function">AddEndpointsApiExplorer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token function">AddSwaggerGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> app <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">Build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Configure the HTTP request pipeline.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>app<span class="token punctuation">.</span>Environment<span class="token punctuation">.</span><span class="token function">IsDevelopment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    app<span class="token punctuation">.</span><span class="token function">UseSwagger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    app<span class="token punctuation">.</span><span class="token function">UseSwaggerUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">UseHttpsRedirection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">UseAuthorization</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">MapControllers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">5/26/2024, 3:21:38 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/edu_db_labs/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/edu_db_labs/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/edu_db_labs/assets/js/app.1b2e2aef.js" defer></script><script src="/edu_db_labs/assets/js/2.4936aa70.js" defer></script><script src="/edu_db_labs/assets/js/1.94825421.js" defer></script><script src="/edu_db_labs/assets/js/30.e2eb125b.js" defer></script>
+  </body>
+</html>
