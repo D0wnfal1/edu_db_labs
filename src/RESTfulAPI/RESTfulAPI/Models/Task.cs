@@ -8,18 +8,17 @@ namespace RESTfulAPI.Models
     {
         [Key]
         public int Id { get; set; }
-
+        
         [Required]
         [MaxLength(50)]
         public string Title { get; set; }
-
+        
         [MaxLength(255)]
         public string Details { get; set; }
-
+        
         [Required]
         public DateTime Deadline { get; set; }
 
-        [Required]
         public int ProjectId { get; set; }
 
         [ForeignKey("ProjectId")]

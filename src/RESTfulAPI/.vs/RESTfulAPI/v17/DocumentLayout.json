@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\projectteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\projectteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220637_Improve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RESTfulAPI\\Migrations\\20240526220637_Improve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,36 +51,16 @@
       "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\migrations\\20240526172232_seedinitialdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\migrations\\20240526172232_seedinitialdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\models\\projectteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|solutionrelative:restfulapi\\models\\projectteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FF84956-C1B7-4527-A25F-DE22B97DB961}|RESTfulAPI\\RESTfulAPI.csproj|d:\\labs\\4semestr\\db\\edu_db_labs\\src\\restfulapi\\restfulapi\\migrations\\20240526171546_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 308,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -93,48 +109,60 @@
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240526222614_ImproveModels.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs",
+              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526222614_ImproveModels.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:26:14.997Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
+              "Title": "20240526221154_ImproveTeam.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs",
+              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526221154_ImproveTeam.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:11:54.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "TeamController.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\TeamController.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Controllers\\TeamController.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\TeamController.cs",
               "RelativeToolTip": "RESTfulAPI\\Controllers\\TeamController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowDoAAAAkAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAGgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T19:38:37.235Z"
+              "WhenOpened": "2024-05-26T19:38:37.235Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ProjectController.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\ProjectController.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Controllers\\ProjectController.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\ProjectController.cs",
               "RelativeToolTip": "RESTfulAPI\\Controllers\\ProjectController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAAeAAAA",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAuwHAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T19:38:14.03Z"
+              "WhenOpened": "2024-05-26T19:38:14.03Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20240526172232_SeedInitialData.cs",
-              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
-              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
-              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
-              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:22:32.807Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "20240526171546_InitialCreate.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526171546_InitialCreate.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526171546_InitialCreate.cs",
@@ -146,19 +174,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Program.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Program.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Program.cs",
               "RelativeToolTip": "RESTfulAPI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:09:46.601Z"
+              "WhenOpened": "2024-05-26T17:09:46.601Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\appsettings.json",
               "RelativeDocumentMoniker": "RESTfulAPI\\appsettings.json",
@@ -170,76 +199,119 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Data\\ApplicationDbContext.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "RESTfulAPI\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwDUAAAAmAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAmwDwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:05:29.667Z"
+              "WhenOpened": "2024-05-26T17:05:29.667Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
               "Title": "ProjectTeam.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\ProjectTeam.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Models\\ProjectTeam.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\ProjectTeam.cs",
               "RelativeToolTip": "RESTfulAPI\\Models\\ProjectTeam.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T17:00:40.222Z"
+              "WhenOpened": "2024-05-26T17:00:40.222Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "Task.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Task.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Models\\Task.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Task.cs",
               "RelativeToolTip": "RESTfulAPI\\Models\\Task.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T16:51:01.223Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Team.cs",
-              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Team.cs",
-              "RelativeDocumentMoniker": "RESTfulAPI\\Models\\Team.cs",
-              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Team.cs",
-              "RelativeToolTip": "RESTfulAPI\\Models\\Team.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T16:49:54.392Z"
+              "WhenOpened": "2024-05-26T16:51:01.223Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Project.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Project.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Models\\Project.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Project.cs",
               "RelativeToolTip": "RESTfulAPI\\Models\\Project.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-26T16:49:49.304Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "Team.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Team.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Models\\Team.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Models\\Team.cs",
+              "RelativeToolTip": "RESTfulAPI\\Models\\Team.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T16:49:54.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20240526220637_Improve.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220637_Improve.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526220637_Improve.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220637_Improve.cs",
+              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526220637_Improve.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:06:38.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20240526220402_ImproveData.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs",
+              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526220402_ImproveData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:04:02.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "TaskController.cs",
               "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\TaskController.cs",
               "RelativeDocumentMoniker": "RESTfulAPI\\Controllers\\TaskController.cs",
               "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Controllers\\TaskController.cs",
               "RelativeToolTip": "RESTfulAPI\\Controllers\\TaskController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFMAAAAbAAAA",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAcwGkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T19:38:26.946Z"
+              "WhenOpened": "2024-05-26T19:38:26.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240526172232_SeedInitialData.cs",
+              "DocumentMoniker": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
+              "RelativeDocumentMoniker": "RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
+              "ToolTip": "D:\\labs\\4semestr\\Db\\edu_db_labs\\src\\RESTfulAPI\\RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
+              "RelativeToolTip": "RESTfulAPI\\Migrations\\20240526172232_SeedInitialData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T17:22:32.807Z"
             }
           ]
         }

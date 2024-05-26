@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RESTfulAPI.Data;
 
@@ -11,9 +12,11 @@ using RESTfulAPI.Data;
 namespace RESTfulAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240526220402_ImproveData")]
+    partial class ImproveData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +123,7 @@ namespace RESTfulAPI.Migrations
                         new
                         {
                             Id = 1,
-                            Deadline = new DateTime(2024, 6, 3, 1, 26, 14, 597, DateTimeKind.Local).AddTicks(1627),
+                            Deadline = new DateTime(2024, 6, 3, 1, 4, 0, 300, DateTimeKind.Local).AddTicks(4859),
                             Details = "Details of Task 1",
                             ProjectId = 1,
                             Title = "Task 1"
@@ -128,7 +131,7 @@ namespace RESTfulAPI.Migrations
                         new
                         {
                             Id = 2,
-                            Deadline = new DateTime(2024, 6, 10, 1, 26, 14, 597, DateTimeKind.Local).AddTicks(1673),
+                            Deadline = new DateTime(2024, 6, 10, 1, 4, 0, 300, DateTimeKind.Local).AddTicks(4903),
                             Details = "Details of Task 2",
                             ProjectId = 2,
                             Title = "Task 2"

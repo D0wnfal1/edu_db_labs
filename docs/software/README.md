@@ -363,4 +363,547 @@ COMMIT;
 
 
 ```
-- RESTfull сервіс для управління даними
+
+## RESTful сервіс для керування даними (Framework: ASP.NET WebAPI)
+
+Цей сервіс розроблено з використанням Web API, що реалізований на платформі .NET - ASP.net WEB API.
+Він базується на базовій архітектурі MVC (Model-View-Controller), де:
+- Model (Модель) - забезпечує дані та реагує на команди контролера, змінюючи свій стан.
+- View (Вигляд) - відповідає за виведення даних для клієнта (в даному випадку - умовно, оскільки це лише Web API).
+- Controller (Контролер) - інтерпретує дії користувача та повідомляє Моделі про необхідність змін стану.
+
+ASP.NET надає програмісту дуже зручний функціонал для створення веб-додатків і, у поєднанні з фреймворком Entity Framework та бібліотекою LINQ (Language Integrated Query), розробник може легко взаємодіяти з базами даних без написання SQL-скриптів напряму.
+
+## Діаграма класів
+
+<p>
+    <img src="./img/diagram.png">
+</p>
+
+
+## Моделі
+
+### Project
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace RESTfulAPI.Models
+{
+    public class Project
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        [MaxLength(255)]
+        public string Details { get; set; }
+
+        public ICollection<Task> Tasks { get; set; }
+
+        public ICollection<ProjectTeam> ProjectTeams { get; set; }
+    }
+}
+```
+
+### ProjectTeam
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RESTfulAPI.Models
+{
+    public class ProjectTeam
+    {
+        public int ProjectId { get; set; }
+        [ForeignKey("ProjectId")]
+        public Project Project { get; set; }
+
+        public int TeamId { get; set; }
+        [ForeignKey("TeamId")]
+        public Team Team { get; set; }
+    }
+}
+```
+
+### Task
+```csharp
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RESTfulAPI.Models
+{
+    public class Task
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Title { get; set; }
+
+        [MaxLength(255)]
+        public string Details { get; set; }
+
+        [Required]
+        public DateTime Deadline { get; set; }
+
+        [Required]
+        public int ProjectId { get; set; }
+
+        [ForeignKey("ProjectId")]
+        public Project Project { get; set; }
+    }
+}
+```
+
+### Team
+```csharp
+using System.ComponentModel.DataAnnotations;
+
+namespace RESTfulAPI.Models
+{
+    public class Team
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        [MaxLength(255)]
+        public string Description { get; set; }
+
+        public ICollection<ProjectTeam> ProjectTeams { get; set; }
+    }
+}
+```
+
+## DbContext
+
+### ApplicationDbContext
+```csharp
+using Microsoft.EntityFrameworkCore;
+using RESTfulAPI.Models;
+using System;
+using System.Linq;
+using Task = RESTfulAPI.Models.Task;
+
+namespace RESTfulAPI.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<ProjectTeam> ProjectTeams { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProjectTeam>()
+                .HasKey(pt => new { pt.ProjectId, pt.TeamId });
+
+            modelBuilder.Entity<ProjectTeam>()
+                .HasOne(pt => pt.Project)
+                .WithMany(p => p.ProjectTeams)
+                .HasForeignKey(pt => pt.ProjectId);
+
+            modelBuilder.Entity<ProjectTeam>()
+                .HasOne(pt => pt.Team)
+                .WithMany(t => t.ProjectTeams)
+                .HasForeignKey(pt => pt.TeamId);
+
+            Seed(modelBuilder);
+        }
+
+        private void Seed(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>().HasData(
+                new Project { Id = 1, Name = "Project 1", Details = "Details of Project 1" },
+                new Project { Id = 2, Name = "Project 2", Details = "Details of Project 2" }
+            );
+
+            modelBuilder.Entity<Team>().HasData(
+                new Team { Id = 1, Name = "Team 1", Description = "Description of Team 1" },
+                new Team { Id = 2, Name = "Team 2", Description = "Description of Team 2" }
+            );
+
+            modelBuilder.Entity<ProjectTeam>().HasData(
+                new ProjectTeam { ProjectId = 1, TeamId = 1 },
+                new ProjectTeam { ProjectId = 2, TeamId = 2 }
+            );
+
+            modelBuilder.Entity<Task>().HasData(
+                new Task { Id = 1, Title = "Task 1", Details = "Details of Task 1", Deadline = DateTime.Now.AddDays(7), ProjectId = 1 },
+                new Task { Id = 2, Title = "Task 2", Details = "Details of Task 2", Deadline = DateTime.Now.AddDays(14), ProjectId = 2 }
+            );
+        }
+    }
+}
+```
+
+## Контролери
+
+### ProjectController
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RESTfulAPI.Data;
+using RESTfulAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RESTfulAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProjectController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ProjectController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Project
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        {
+            return await _context.Projects.ToListAsync();
+        }
+
+        // GET: api/Project
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Project>> GetProject(int id)
+        {
+            var project = await _context.Projects.FindAsync(id);
+
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            return project;
+        }
+
+        // POST: api/Project
+        [HttpPost]
+        public async Task<ActionResult<Project>> PostProject(Project project)
+        {
+            _context.Projects.Add(project);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
+        }
+
+        // PUT: api/Project
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProject(int id, Project project)
+        {
+            if (id != project.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(project).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProjectExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/Project
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProject(int id)
+        {
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool ProjectExists(int id)
+        {
+            return _context.Projects.Any(e => e.Id == id);
+        }
+    }
+}
+```
+
+### TaskController
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RESTfulAPI.Data;
+using RESTfulAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Task = RESTfulAPI.Models.Task;
+
+namespace RESTfulAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TaskController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+
+        public TaskController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Task
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Task>>> GetTasks()
+        {
+            return await _context.Tasks.ToListAsync();
+        }
+
+        // GET: api/Task
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Task>> GetTask(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return task;
+        }
+
+        // POST: api/Task
+        [HttpPost]
+        public async Task<ActionResult<Task>> PostTask(Task task)
+        {
+            _context.Tasks.Add(task);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
+        }
+
+        // PUT: api/Task
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTask(int id, Task task)
+        {
+            if (id != task.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(task).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TaskExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/Task
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            _context.Tasks.Remove(task);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool TaskExists(int id)
+        {
+            return _context.Tasks.Any(e => e.Id == id);
+        }
+    }
+}
+```
+
+### TeamController
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RESTfulAPI.Data;
+using RESTfulAPI.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RESTfulAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TeamController : ControllerBase
+    {
+        private readonly ApplicationDbContext _context;
+
+        public TeamController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Team
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
+        {
+            return await _context.Teams.ToListAsync();
+        }
+
+        // GET: api/Team
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Team>> GetTeam(int id)
+        {
+            var team = await _context.Teams.FindAsync(id);
+
+            if (team == null)
+            {
+                return NotFound();
+            }
+
+            return team;
+        }
+
+        // POST: api/Team
+        [HttpPost]
+        public async Task<ActionResult<Team>> PostTeam(Team team)
+        {
+            _context.Teams.Add(team);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetTeam), new { id = team.Id }, team);
+        }
+
+        // PUT: api/Team
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTeam(int id, Team team)
+        {
+            if (id != team.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(team).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TeamExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/Team
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTeam(int id)
+        {
+            var team = await _context.Teams.FindAsync(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+
+            _context.Teams.Remove(team);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool TeamExists(int id)
+        {
+            return _context.Teams.Any(e => e.Id == id);
+        }
+    }
+}
+```
+
+## Файл запуску
+
+### Program
+```csharp
+using Microsoft.EntityFrameworkCore;
+using RESTfulAPI.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+```

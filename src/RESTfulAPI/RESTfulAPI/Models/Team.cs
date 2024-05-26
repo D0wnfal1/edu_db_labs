@@ -14,7 +14,7 @@ namespace RESTfulAPI.Models
 
         [MaxLength(255)]
         public string Description { get; set; }
-
-        public ICollection<ProjectTeam> ProjectTeams { get; set; }
+        
+        public ICollection<ProjectTeam> ProjectTeams { get; set; } = new List<ProjectTeam>();
     }
 }

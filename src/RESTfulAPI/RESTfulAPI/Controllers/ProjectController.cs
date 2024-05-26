@@ -23,14 +23,22 @@ namespace RESTfulAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
-            return await _context.Projects.ToListAsync();
+            return await _context.Projects
+                .Include(p => p.Tasks)
+                .Include(p => p.ProjectTeams)
+                    .ThenInclude(pt => pt.Team)
+                .ToListAsync();
         }
 
-        // GET: api/Project
+        // GET: api/Project/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Project>> GetProject(int id)
         {
-            var project = await _context.Projects.FindAsync(id);
+            var project = await _context.Projects
+                .Include(p => p.Tasks)
+                .Include(p => p.ProjectTeams)
+                    .ThenInclude(pt => pt.Team)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (project == null)
             {
@@ -50,7 +58,7 @@ namespace RESTfulAPI.Controllers
             return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
         }
 
-        // PUT: api/Project
+        // PUT: api/Project/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProject(int id, Project project)
         {
@@ -80,7 +88,7 @@ namespace RESTfulAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Project
+        // DELETE: api/Project/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(int id)
         {
